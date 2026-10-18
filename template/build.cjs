@@ -52,7 +52,7 @@ const shell = (mark, body) => `<!doctype html>
   ${body}
 </div></body></html>`;
 
-const foot = (text) => `<div class="foot"><p>${text}</p><div class="handle">Aureti<span>@aure.tii</span></div></div>`;
+const foot = (text, handle = "Aureti<span>@aure.tii</span>") => `<div class="foot"><p>${text}</p><div class="handle">${handle}</div></div>`;
 
 const visual = (img, tag, position = "50% 40%") =>
   `<div class="visual"><img src="${ASSETS}${img}" style="object-position:${position}" alt=""><div class="tag">${tag}</div></div>`;
@@ -90,6 +90,10 @@ const posts = {
     ${foot("Catálogo online com busca, categorias e produtos organizados — no computador, tablet ou celular.")}`),
 };
 
-const outDir = __dirname;
-for (const [name, html] of Object.entries(posts)) fs.writeFileSync(path.join(outDir, name + ".html"), html);
-console.log(Object.keys(posts).join(" "));
+module.exports = { shell, foot, visual };
+
+if (require.main === module) {
+  const outDir = __dirname;
+  for (const [name, html] of Object.entries(posts)) fs.writeFileSync(path.join(outDir, name + ".html"), html);
+  console.log(Object.keys(posts).join(" "));
+}
