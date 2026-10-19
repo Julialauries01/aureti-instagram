@@ -31,7 +31,7 @@ for (const w of WEEKS) {
       format: extra ? "Reels" : video ? "Reels" : "Post", theme: title,
       file: video || files[0], cover: video ? files.find(f => f.endsWith(".png")) : "",
       text: body, week: w,
-      status: /PENDENTE/.test(sec) ? "pendente" : /já agendado/i.test(sec) ? "já agendado" : "a agendar",
+      status: /PENDENTE/.test(sec) ? "pendente (não agendado)" : "agendado",
     });
   }
 }
@@ -46,7 +46,7 @@ for (const st of stories) {
   items.push({
     date: st.date, time: st.time, channel: "Story", format: st.manual ? "Story (figurinha)" : "Story",
     theme: st.desc, file: `stories/${st.name}.png`, cover: "", text: "", week: w,
-    status: "a agendar", manual: st.manual,
+    status: "agendado", manual: st.manual,
   });
 }
 
