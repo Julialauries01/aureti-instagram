@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=block" rel="stylesheet">
+<style>
+  :root { --navy: oklch(0.175 0.052 257); --navy-soft: oklch(0.23 0.058 256); --gold: oklch(0.62 0.11 78); --gold-soft: oklch(0.78 0.08 80); --ivory: oklch(0.965 0.009 83); --muted: oklch(0.48 0.018 250); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; }
+  body { font-family: "DM Sans", sans-serif; }
+  .story { position: relative; width: 1080px; height: 1920px; display: flex; flex-direction: column; padding: 250px 90px 340px; }
+  .story.dark { background: var(--navy); color: var(--ivory); }
+  .story.light { background: var(--ivory); color: var(--navy); }
+  .top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .brand { display: flex; flex-direction: column; line-height: 1; }
+  .brand span { font-size: 50px; font-weight: 300; }
+  .brand small { margin-top: 10px; color: var(--gold); font-size: 14px; font-weight: 600; letter-spacing: .22em; }
+  .dark .brand small { color: var(--gold-soft); }
+  .mark { display: flex; align-items: center; gap: 18px; margin-top: 12px; font-size: 17px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+  .mark::before { content: ""; width: 56px; height: 1.5px; background: var(--gold); }
+  .body { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  h1 { font-weight: 600; font-size: 104px; line-height: 1; letter-spacing: -.035em; }
+  h1 em { font-style: normal; color: var(--gold); }
+  .dark h1 em { color: var(--gold-soft); }
+  .lead { margin-top: 48px; font-size: 38px; font-weight: 300; line-height: 1.4; }
+  .dark .lead { color: oklch(0.965 0.009 83 / .82); }
+  .lead b { font-weight: 500; color: var(--gold); }
+  .dark .lead b { color: var(--gold-soft); }
+  .big { font-size: 300px; font-weight: 600; line-height: .9; letter-spacing: -.05em; color: var(--gold-soft); }
+  .big small { font-size: 120px; letter-spacing: -.03em; }
+  .source { margin-top: 28px; font-size: 20px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: oklch(0.965 0.009 83 / .5); }
+  .slot { margin-top: 64px; height: 300px; border: 2px dashed oklch(0.62 0.11 78 / .55); border-radius: 28px; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: oklch(0.62 0.11 78 / .7); }
+  .dark .slot { border-color: oklch(0.78 0.08 80 / .45); color: oklch(0.78 0.08 80 / .6); }
+  .shot { margin: 56px -90px 0; height: 560px; overflow: hidden; position: relative; }
+  .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .shot .tag { position: absolute; left: 90px; bottom: 28px; padding: 14px 22px; background: var(--ivory); color: var(--navy); font-size: 17px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+  .shot .tag b { color: var(--gold); font-weight: 600; }
+  .rows { margin-top: 56px; border-top: 1.5px solid oklch(0.62 0.11 78 / .35); }
+  .rows div { display: grid; grid-template-columns: 90px 1fr; align-items: baseline; padding: 30px 0; border-bottom: 1.5px solid oklch(0.62 0.11 78 / .35); }
+  .rows span { color: var(--gold); font-size: 26px; font-weight: 600; letter-spacing: .1em; }
+  .dark .rows span { color: var(--gold-soft); }
+  .rows strong { font-size: 42px; font-weight: 600; letter-spacing: -.02em; line-height: 1.15; }
+  .rows small { display: block; margin-top: 8px; font-size: 28px; font-weight: 300; line-height: 1.35; opacity: .75; }
+  .vs { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .vs div { padding: 40px 36px; border-radius: 24px; font-size: 30px; font-weight: 300; line-height: 1.45; }
+  .vs div:first-child { background: oklch(0.965 0.009 83 / .06); color: oklch(0.965 0.009 83 / .6); }
+  .vs div:last-child { background: var(--gold-soft); color: var(--navy); font-weight: 400; }
+  .vs b { display: block; margin-bottom: 18px; font-size: 20px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+  .sign { display: flex; justify-content: space-between; align-items: flex-end; padding-top: 36px; border-top: 1.5px solid oklch(0.62 0.11 78 / .35); font-size: 17px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+  .dark .sign { border-color: oklch(0.78 0.08 80 / .35); color: var(--gold-soft); }
+  .sign span { color: inherit; font-size: 26px; font-weight: 400; letter-spacing: .08em; text-transform: none; }
+  .dark .sign span { color: var(--ivory); }
+  .light .sign span { color: var(--navy); }
+</style></head>
+<body><div class="story dark">
+  <div class="top"><div class="brand"><span>aureti</span><small>ENGENHARIA DE SOFTWARE</small></div><p class="mark">Modelo pronto</p></div>
+  <div class="body"><style>
+  .ph { margin: 50px auto 0; width: 470px; height: 900px; border-radius: 64px; background: #0d0f14; padding: 16px; box-shadow: 0 40px 90px rgba(0,0,0,.35); }
+  .ph div { width: 100%; height: 100%; border-radius: 50px; overflow: hidden; }
+  .ph img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .pic { margin: 44px -90px 0; height: 500px; overflow: hidden; }
+  .pic img { width: 100%; height: 100%; object-fit: cover; }
+  .chip { display: inline-block; margin-top: 36px; padding: 18px 30px; border-radius: 999px; font-size: 28px; font-weight: 600; background: var(--gold-soft); color: var(--navy); }
+</style>
+  <p class="lead" style="margin:0;color:var(--gold-soft)">Coaching e mentoria</p><h1 style="font-size:88px;margin-top:10px">Soraya Nunes</h1>
+  <div class="ph"><div><img src="file:///C:/Users/Martha/Documents/Projetos/aureti-instagram/template/motion/telas/m-soraya-1.jpg"></div></div><p style="text-align:center"><span class="chip">Responda MODELO e receba o link</span></p></div>
+  <div class="sign">Aureti<span>@aure.tii</span></div>
+</div></body></html>

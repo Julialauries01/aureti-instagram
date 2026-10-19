@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<script src="motion.js"></script>
+<style>
+  /* Style: "produto em destaque" — circle reveal, floating phone with real screens, cards, counter */
+  #light { background: var(--ivory); }
+  #dot { position: absolute; left: 510px; top: 930px; width: 60px; height: 60px; border-radius: 50%; background: var(--ivory); }
+  #words { position: absolute; left: 90px; top: 560px; transform-origin: 0 0; }
+  #words .big { display: block; color: var(--navy); }
+  #phone { left: 230px; top: 640px; }
+  #phone .scr img { opacity: 0; }
+  #c1 { left: 40px; top: 900px; } #c2 { right: 40px; top: 1180px; } #c3 { left: 60px; top: 1480px; }
+  #h24 .num { font-size: 380px; font-weight: 600; letter-spacing: -.05em; line-height: .9; color: var(--gold-soft); }
+  #end .proj { font-size: 22px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-soft); }
+  #end .client { margin: 22px 0 90px; font-size: 64px; font-weight: 600; letter-spacing: -.02em; }
+</style></head>
+<body><div class="stage">
+  <div class="layer navy"></div>
+  <div id="light" class="layer">
+    <div class="brand" style="color:var(--navy)"><span>aureti</span><small style="color:var(--gold)">ENGENHARIA DE SOFTWARE</small></div>
+    <p class="mark" style="color:var(--navy)">Projeto entregue</p>
+  </div>
+  <div id="dot"></div>
+  <div id="words">
+    <span class="big w">Seu cliente</span><span class="big w">procura,</span><span class="big w">encontra</span><span class="big w">e <em style="color:var(--gold)">chama.</em></span>
+  </div>
+  <div id="phone" class="phone"><div class="scr">
+    <img src="telas/escala-0.jpg"><img src="telas/escala-1.jpg"><img src="telas/escala-2.jpg"><img src="telas/escala-3.jpg">
+  </div></div>
+  <div id="c1" class="card navy-card"><small>Vitrine</small>Produtos em destaque</div>
+  <div id="c2" class="card"><small>Organização</small>Categorias claras</div>
+  <div id="c3" class="card navy-card"><small>Contato</small>Pedido pelo WhatsApp</div>
+  <div id="h24" class="layer navy center">
+    <p class="lead" style="color:var(--gold-soft)">Catálogo online</p>
+    <p class="num"><span id="n24">0</span>h</p>
+    <p class="h" style="margin-top:20px">aberto para<br>o seu cliente.</p>
+  </div>
+  <div id="end" class="layer navy center end">
+    <p class="proj">Projeto entregue</p>
+    <p class="client">Escala Materiais Elétricos</p>
+    <p class="logo">aureti<small>ENGENHARIA DE SOFTWARE</small></p>
+    <p class="handle">@aure.tii</p>
+    <p class="cta">Comente CATÁLOGO e receba um orçamento</p>
+  </div>
+</div>
+<script>
+  const words = $$("#words .w"), imgs = $$("#phone img"), cards = ["#c1", "#c2", "#c3"].map($);
+  scene(14.6, t => {
+    // dot pops, then the ivory page opens as a circle from the center
+    pop($("#dot"), seg(t, 0, .5)); $("#dot").style.opacity = t < .9 ? 1 : 0;
+    const r = E.in(seg(t, .55, 1.25)) * 1200;
+    $("#light").style.clipPath = `circle(${Math.max(r, 1)}px at 540px 960px)`;
+    // headline word by word, then it shrinks to the top
+    words.forEach((w, i) => rise(w, seg(t, 1.15 + i * .45, 1.7 + i * .45), 140));
+    const up = E.inOut(seg(t, 3.9, 4.7));
+    $("#words").style.transform = `translateY(${-330 * up}px) scale(${1 - .38 * up})`;
+    // phone rises, screens change, cards pop around it
+    const ph = E.out(seg(t, 4.2, 5.3)), out = E.in(seg(t, 8.7, 9.4));
+    const wob = lerp(-14, 10, E.inOut(seg(t, 4.2, 8.5)));
+    css($("#phone"), { y: (1 - ph) * 1360 - out * 340, ry: wob, s: 1 + out * 1.2, o: 1 - out });
+    imgs.forEach((im, i) => im.style.opacity = i === 0 ? 1 : E.out(seg(t, 5.6 + (i - 1) * 1.1, 5.95 + (i - 1) * 1.1)));
+    cards.forEach((c, i) => { pop(c, seg(t, 5.4 + i * .8, 5.9 + i * .8)); if (t > 8.6) css(c, { y: -40 * seg(t, 8.6, 8.9), o: 1 - seg(t, 8.6, 8.9) }); });
+    // 24h counter
+    $("#h24").style.opacity = seg(t, 9.25, 9.55) * (1 - seg(t, 11.4, 11.75));
+    $$("#h24 > *").forEach((e, i) => rise(e, seg(t, 9.3 + i * .12, 9.8 + i * .12), 60));
+    $("#n24").textContent = Math.round(24 * E.out(seg(t, 9.4, 10.6)));
+    // end card
+    $("#end").style.opacity = seg(t, 11.4, 11.75);
+    $$("#end > *").forEach((e, i) => rise(e, seg(t, 11.45 + i * .15, 12 + i * .15), 50));
+  });
+</script>
+</body></html>

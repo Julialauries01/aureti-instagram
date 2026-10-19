@@ -1,0 +1,39 @@
+/* Shared look for Aureti motions (1080x1920, DM Sans, navy / gold / ivory). */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=block');
+:root {
+  --navy: oklch(0.175 0.052 257); --navy-soft: oklch(0.23 0.058 256);
+  --gold: oklch(0.62 0.11 78); --gold-soft: oklch(0.78 0.08 80);
+  --ivory: oklch(0.965 0.009 83); --muted: oklch(0.48 0.018 250);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--navy); font-family: "DM Sans", sans-serif; color: var(--ivory); }
+.stage { position: absolute; inset: 0; overflow: hidden; perspective: 2400px; }
+.layer { position: absolute; inset: 0; }
+.ivory { background: var(--ivory); color: var(--navy); }
+.navy { background: var(--navy); color: var(--ivory); }
+.center { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.brand { position: absolute; left: 90px; top: 150px; line-height: 1; }
+.brand span { display: block; font-size: 50px; font-weight: 300; }
+.brand small { display: block; margin-top: 10px; font-size: 14px; font-weight: 600; letter-spacing: .22em; color: var(--gold-soft); }
+.ivory .brand small { color: var(--gold); }
+.mark { position: absolute; right: 90px; top: 162px; display: flex; align-items: center; gap: 18px; font-size: 17px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+.mark::before { content: ""; width: 56px; height: 1.5px; background: var(--gold); }
+.big { font-size: 128px; font-weight: 600; letter-spacing: -.04em; line-height: 1; }
+.big em, .h em { font-style: normal; color: var(--gold-soft); }
+.ivory .big em, .ivory .h em { color: var(--gold); }
+.h { font-size: 96px; font-weight: 600; letter-spacing: -.035em; line-height: 1.02; }
+.lead { font-size: 40px; font-weight: 300; line-height: 1.4; }
+.w { display: inline-block; }
+/* phone frame: 390x844 screen scaled */
+.phone { position: absolute; width: 620px; height: 1300px; border-radius: 86px; background: #0d0f14; padding: 22px; box-shadow: 0 60px 140px rgba(0,0,0,.45), inset 0 0 0 3px #2a2d35; }
+.phone .scr { position: relative; width: 100%; height: 100%; border-radius: 66px; overflow: hidden; background: #fff; }
+.phone .scr img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.phone::before { content: ""; position: absolute; left: 50%; top: 40px; width: 150px; height: 40px; margin-left: -75px; border-radius: 20px; background: #0d0f14; z-index: 2; }
+.card { position: absolute; padding: 30px 38px; border-radius: 28px; background: var(--ivory); color: var(--navy); font-size: 34px; font-weight: 600; letter-spacing: -.01em; box-shadow: 0 30px 70px rgba(0,0,0,.28); white-space: nowrap; }
+.card small { display: block; font-size: 18px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.navy-card { background: var(--navy); color: var(--ivory); }
+.end .handle { margin-top: 36px; font-size: 34px; letter-spacing: .08em; opacity: .85; }
+.end .logo { font-size: 150px; font-weight: 300; letter-spacing: -.02em; line-height: 1; }
+.end .logo small { display: block; margin-top: 18px; font-size: 22px; font-weight: 600; letter-spacing: .3em; color: var(--gold-soft); }
+.ivory.end .logo small { color: var(--gold); }
+.cta { margin-top: 60px; padding: 26px 46px; border-radius: 999px; background: var(--gold-soft); color: var(--navy); font-size: 32px; font-weight: 600; letter-spacing: .02em; }

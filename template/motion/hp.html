@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<script src="motion.js"></script>
+<style>
+  /* Style: "lançamento de app" — dark stage with moving color glows, floating device shot, letter-spaced reveal, feature chips */
+  body { background: #070b16; }
+  .glow { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; filter: blur(10px); }
+  #g1 { background: radial-gradient(circle, rgba(79,91,213,.55), transparent 62%); }
+  #g2 { background: radial-gradient(circle, rgba(200,160,90,.45), transparent 62%); }
+  #g3 { background: radial-gradient(circle, rgba(40,180,170,.35), transparent 62%); }
+  #kick { position: absolute; left: 0; right: 0; top: 330px; text-align: center; font-size: 24px; font-weight: 600; letter-spacing: .4em; text-transform: uppercase; color: var(--gold-soft); }
+  #name { position: absolute; left: 0; right: 0; top: 400px; text-align: center; font-size: 150px; font-weight: 600; color: #fff; white-space: nowrap; }
+  #sub { position: absolute; left: 0; right: 0; top: 590px; text-align: center; font-size: 38px; font-weight: 300; color: rgba(255,255,255,.75); }
+  #dev { position: absolute; left: 90px; top: 700px; width: 900px; height: 740px; border-radius: 40px; overflow: hidden; box-shadow: 0 60px 160px rgba(0,0,0,.6); }
+  #dev img { width: 100%; height: 100%; object-fit: cover; }
+  .chip { position: absolute; padding: 22px 34px; border-radius: 999px; background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.25); color: #fff; font-size: 32px; font-weight: 500; backdrop-filter: none; white-space: nowrap; }
+  .chip b { color: var(--gold-soft); font-weight: 600; margin-right: 10px; }
+  #k1 { left: 60px; top: 1500px; } #k2 { right: 60px; top: 1610px; } #k3 { left: 140px; top: 1720px; }
+  #end { background: #070b16; }
+  #end .h em { color: var(--gold-soft); }
+</style></head>
+<body><div class="stage">
+  <div id="g1" class="glow"></div><div id="g2" class="glow"></div><div id="g3" class="glow"></div>
+  <p id="kick">Aplicativo mobile</p>
+  <p id="name">Sistema HP</p>
+  <p id="sub">Gestão de serviços técnicos na palma da mão.</p>
+  <div id="dev"><img src="../../../your-dream-website/src/assets/sistema-hp.webp"></div>
+  <p id="k1" class="chip"><b>01</b>UX/UI pensado para o campo</p>
+  <p id="k2" class="chip"><b>02</b>Celular e tablet</p>
+  <p id="k3" class="chip"><b>03</b>Do protótipo ao app</p>
+  <div id="end" class="layer center end">
+    <p class="h">Tem uma ideia<br>de <em>aplicativo?</em></p>
+    <p class="lead" style="margin:40px 0 90px;color:rgba(255,255,255,.75)">A gente transforma em produto.</p>
+    <p class="logo">aureti<small>ENGENHARIA DE SOFTWARE</small></p>
+    <p class="handle">@aure.tii</p>
+    <p class="cta">Comente APP e vamos conversar</p>
+  </div>
+</div>
+<script>
+  scene(13, t => {
+    // glows drift slowly across the dark stage
+    const g = (id, x0, y0, x1, y1) => css($(id), { x: lerp(x0, x1, E.inOut(seg(t, 0, 13))), y: lerp(y0, y1, E.inOut(seg(t, 0, 13))), o: seg(t, 0, 1.2) });
+    g("#g1", -500, -300, 100, 500); g("#g2", 500, 900, -200, 300); g("#g3", 200, 1400, 400, -200);
+    // name: letters tighten from wide spacing while fading in
+    const n = E.out(seg(t, .4, 2));
+    $("#name").style.letterSpacing = `${lerp(.5, -.04, n)}em`; $("#name").style.opacity = n;
+    $("#name").style.filter = `blur(${(1 - n) * 14}px)`;
+    rise($("#kick"), seg(t, .2, .9), 30); rise($("#sub"), seg(t, 1.4, 2.1), 40);
+    // device floats up, slow push-in, then a quick zoom into the screen
+    const up = E.out(seg(t, 1.8, 3.2)), push = seg(t, 3.2, 9.5), dive = E.in(seg(t, 9.6, 10.4));
+    css($("#dev"), { y: (1 - up) * 900 + Math.sin(t * 1.4) * 10 - dive * 300, s: .9 + .1 * up + .06 * push + dive * 1.6, r: lerp(-4, 2, push) , o: up * (1 - dive) });
+    ["#k1", "#k2", "#k3"].forEach((k, i) => { const u = seg(t, 4.2 + i * .9, 4.8 + i * .9); css($(k), { x: (1 - E.out(u)) * (i % 2 ? 300 : -300), o: u * (1 - seg(t, 9.4, 9.7)) }); });
+    $$("#kick, #name, #sub").forEach(e => { if (t > 9.4) e.style.opacity = Math.min(+e.style.opacity, 1 - seg(t, 9.4, 9.8)); });
+    $("#end").style.opacity = seg(t, 10.1, 10.5);
+    $$("#end > *").forEach((e, i) => rise(e, seg(t, 10.2 + i * .15, 10.8 + i * .15), 50));
+  });
+</script>
+</body></html>

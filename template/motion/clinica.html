@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<script src="motion.js"></script>
+<style>
+  /* Style: "montagem" — blueprint grid, site blocks fly in and snap into a phone, real screen appears, 3-step progress */
+  :root { --teal: #1f8a83; --teal-d: #0f4f4b; --mint: #e7f4f2; }
+  body { background: var(--teal-d); }
+  #bp { background: var(--teal-d); background-image: linear-gradient(rgba(255,255,255,.07) 2px, transparent 2px), linear-gradient(90deg, rgba(255,255,255,.07) 2px, transparent 2px); background-size: 60px 60px; }
+  #top { position: absolute; left: 90px; top: 250px; color: #fff; }
+  #top p { font-size: 24px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: #8fd6cf; margin-bottom: 22px; }
+  #top .h em { color: #8fd6cf; }
+  #ph { left: 300px; top: 640px; width: 480px; height: 1000px; border-radius: 70px; padding: 18px; }
+  #ph .scr { border-radius: 54px; background: var(--mint); }
+  .blk { position: absolute; border-radius: 16px; }
+  #bk1 { left: 30px; top: 70px; width: 160px; height: 34px; background: var(--teal); }
+  #bk2 { left: 30px; top: 150px; width: 384px; height: 380px; background: #b9dcd8; border-radius: 26px; }
+  #bk3 { left: 30px; top: 560px; width: 300px; height: 40px; background: #2b3a3a; }
+  #bk4 { left: 30px; top: 620px; width: 240px; height: 40px; background: #2b3a3a; }
+  #bk5 { left: 30px; top: 700px; width: 210px; height: 66px; background: var(--teal); border-radius: 33px; }
+  #bk6 { left: 30px; top: 800px; width: 384px; height: 140px; background: #fff; }
+  #ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  #steps { position: absolute; left: 90px; right: 90px; top: 1700px; display: flex; justify-content: space-between; }
+  .st { display: flex; align-items: center; gap: 16px; color: #fff; font-size: 30px; font-weight: 500; }
+  .st i { width: 46px; height: 46px; border-radius: 50%; border: 3px solid #8fd6cf; display: flex; align-items: center; justify-content: center; font-style: normal; font-size: 24px; color: var(--teal-d); }
+  #line { position: absolute; left: 90px; right: 90px; top: 1680px; height: 4px; background: rgba(255,255,255,.15); }
+  #line div { height: 100%; background: #8fd6cf; transform-origin: 0 50%; }
+  #end { background: var(--mint); color: var(--teal-d); }
+  #end .h em { color: var(--teal); }
+  #end .logo small { color: var(--teal); }
+  #end .cta { background: var(--teal); color: #fff; }
+</style></head>
+<body><div class="stage">
+  <div id="bp" class="layer"></div>
+  <div id="top"><p>Modelo pronto · Clínica</p><p class="h" style="font-size:88px;letter-spacing:-.03em;text-transform:none;color:#fff;margin:0">Seu site pronto<br>em <em>poucos dias.</em></p></div>
+  <div id="ph" class="phone"><div class="scr">
+    <div id="bk1" class="blk"></div><div id="bk2" class="blk"></div><div id="bk3" class="blk"></div>
+    <div id="bk4" class="blk"></div><div id="bk5" class="blk"></div><div id="bk6" class="blk"></div>
+    <div id="real" style="position:absolute;inset:0"><img src="telas/clinica-0.jpg"><img src="telas/clinica-1.jpg"><img src="telas/clinica-2.jpg"><img src="telas/clinica-3.jpg"></div>
+  </div></div>
+  <div id="line"><div></div></div>
+  <div id="steps"><p class="st"><i>1</i>Escolha o modelo</p><p class="st"><i>2</i>Sua marca</p><p class="st"><i>3</i>No ar</p></div>
+  <div id="end" class="layer center end">
+    <p class="h">Dentista, seu<br>site <em>já está quase</em><br><em>pronto.</em></p>
+    <p class="lead" style="margin:40px 0 90px">Modelo personalizado com sua marca, fotos e serviços.</p>
+    <p class="logo">aureti<small>ENGENHARIA DE SOFTWARE</small></p>
+    <p class="handle">@aure.tii</p>
+    <p class="cta">Comente MODELO e veja o site</p>
+  </div>
+</div>
+<script>
+  const from = [[-700, -300, -40], [800, 200, 25], [-600, 500, -15], [700, 700, 30], [-500, 900, 60], [600, -500, -20]];
+  scene(14, t => {
+    $$("#top > *").forEach((e, i) => rise(e, seg(t, .2 + i * .3, .9 + i * .3), 60));
+    rise($("#ph"), seg(t, .6, 1.4), 200);
+    // blocks fly in from outside and snap into place
+    $$(".blk").forEach((b, i) => { const u = E.back(seg(t, 1.5 + i * .35, 2.1 + i * .35)); const [x, y, r] = from[i]; css(b, { x: x * (1 - u), y: y * (1 - u), r: r * (1 - u), o: seg(t, 1.5 + i * .35, 1.7 + i * .35) }); });
+    // real screen fades over the assembled blocks with a light flash
+    const real = seg(t, 4.4, 5.2);
+    $("#real").style.opacity = real;
+    css($("#ph"), { y: (1 - E.out(seg(t, .6, 1.4))) * 200, s: 1 + .04 * Math.sin(Math.PI * seg(t, 4.4, 5.2)) - .25 * E.in(seg(t, 10.6, 11.2)), o: seg(t, .6, 1) * (1 - seg(t, 10.8, 11.2)) });
+    // later screens slide up over the first one, like scrolling the site
+    $$("#real img").forEach((im, i) => { const u = i ? E.out(seg(t, 5.4 + (i - 1) * 1.2, 5.9 + (i - 1) * 1.2)) : 1; im.style.transform = `translateY(${(1 - u) * 1000}px)`; });
+    // 3 steps with a progress line
+    $("#line div").style.transform = `scaleX(${E.inOut(seg(t, 6.5, 9.5))})`;
+    $$(".st").forEach((s, i) => { const u = seg(t, 6.5 + i * 1.4, 6.9 + i * 1.4); rise(s, Math.max(u, .001), 30); s.querySelector("i").style.background = u >= 1 ? "#8fd6cf" : "transparent"; s.querySelector("i").textContent = u >= 1 ? "✓" : String(i + 1); });
+    $("#top").style.opacity = 1 - seg(t, 10.6, 11);
+    $("#end").style.clipPath = `inset(${100 - E.inOut(seg(t, 10.8, 11.6)) * 100}% 0 0 0)`;
+    $$("#end > *").forEach((e, i) => rise(e, seg(t, 11.2 + i * .15, 11.8 + i * .15), 50));
+  });
+</script>
+</body></html>

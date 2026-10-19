@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<script src="motion.js"></script>
+<style>
+  /* Style: "do rascunho ao site" — sketch lines draw a wireframe, it turns into the real site, pages slide */
+  :root { --wine: #5a1a22; --wine-d: #3b0d14; --cream: #f4ece4; --line: #b9a89b; }
+  body { background: var(--cream); }
+  #paper { background: var(--cream); background-image: linear-gradient(#e6dbd1 1.5px, transparent 1.5px), linear-gradient(90deg, #e6dbd1 1.5px, transparent 1.5px); background-size: 54px 54px; }
+  #title { position: absolute; left: 90px; top: 250px; color: var(--wine); }
+  #title .h em { color: #b0654f; font-style: italic; font-weight: 500; }
+  #title p { font-size: 26px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: #9b7d6c; margin-bottom: 26px; }
+  #frame { position: absolute; left: 240px; top: 620px; width: 600px; height: 1100px; }
+  #frame svg { position: absolute; inset: 0; overflow: visible; }
+  #frame svg * { fill: none; stroke: var(--wine); stroke-width: 4; stroke-linecap: round; }
+  #real { position: absolute; inset: 0; border-radius: 48px; overflow: hidden; box-shadow: 0 40px 100px rgba(59,13,20,.3); }
+  #real img { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
+  .note { position: absolute; font-size: 30px; font-style: italic; color: #b0654f; white-space: nowrap; }
+  .note::before { content: "↙ "; font-style: normal; }
+  #n1 { left: 760px; top: 700px; } #n2 { left: 40px; top: 1010px; } #n2::before { content: ""; } #n2::after { content: " ↘"; font-style: normal; } #n3 { left: 770px; top: 1520px; }
+  #end { background: var(--wine-d); color: var(--cream); }
+  #end .client { font-size: 30px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: #d9a48f; }
+  #end .h { margin: 30px 0 100px; color: var(--cream); }
+  #end .h em { color: #d9a48f; font-style: italic; font-weight: 500; }
+  #end .logo small { color: #d9a48f; }
+  #end .cta { background: #d9a48f; color: var(--wine-d); }
+</style></head>
+<body><div class="stage">
+  <div id="paper" class="layer"></div>
+  <div id="title"><p>Advocacia · Karina Mendes</p><div class="h"><span class="w">Do rascunho</span><br><span class="w">ao <em>site no ar.</em></span></div></div>
+  <div id="frame">
+    <svg viewBox="0 0 600 1100">
+      <rect class="d" x="2" y="2" width="596" height="1096" rx="48"/>
+      <line class="d" x1="40" y1="90" x2="300" y2="90"/><line class="d" x1="500" y1="80" x2="560" y2="80"/><line class="d" x1="500" y1="100" x2="560" y2="100"/>
+      <line class="d" x1="40" y1="420" x2="460" y2="420"/><line class="d" x1="40" y1="480" x2="420" y2="480"/><line class="d" x1="40" y1="540" x2="380" y2="540"/>
+      <line class="d" x1="40" y1="620" x2="520" y2="620"/><line class="d" x1="40" y1="660" x2="480" y2="660"/>
+      <rect class="d" x="40" y="740" width="250" height="80" rx="40"/>
+      <rect class="d" x="40" y="880" width="520" height="180" rx="24"/>
+    </svg>
+    <div id="real"><img class="pg" src="telas/karina-0.jpg"><img class="pg" src="telas/karina-1.jpg"><img class="pg" src="telas/karina-3.jpg"><img class="pg" src="telas/karina-4.jpg"></div>
+  </div>
+  <p id="n1" class="note">identidade</p>
+  <p id="n2" class="note">áreas de atuação</p>
+  <p id="n3" class="note">contato a um toque</p>
+  <div id="end" class="layer center end">
+    <p class="client">Karina Mendes Advocacia</p>
+    <p class="h">Confiança que<br>começa no <em>primeiro clique.</em></p>
+    <p class="logo">aureti<small>ENGENHARIA DE SOFTWARE</small></p>
+    <p class="handle">@aure.tii</p>
+    <p class="cta">Comente SITE e receba um orçamento</p>
+  </div>
+</div>
+<script>
+  const paths = $$("#frame .d");
+  paths.forEach(p => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.dataset.l = L; });
+  scene(14, t => {
+    $$("#title .w").forEach((w, i) => rise(w, seg(t, .2 + i * .35, .8 + i * .35), 70));
+    // sketch lines draw one after another
+    paths.forEach((p, i) => { const u = E.out(seg(t, .8 + i * .22, 1.5 + i * .22)); p.style.strokeDashoffset = p.dataset.l * (1 - u); });
+    ["#n1", "#n2", "#n3"].forEach((n, i) => { const u = seg(t, 1.8 + i * .6, 2.3 + i * .6) * (1 - seg(t, 4.6, 4.9)); rise($(n), u, 30); $(n).style.opacity = u; });
+    // the wireframe turns into the real site (wipe from top), then pages slide like a carousel
+    const wipe = E.inOut(seg(t, 4.6, 5.5));
+    $("#real").style.clipPath = `inset(0 0 ${100 - wipe * 100}% 0 round 48px)`;
+    $("#frame svg").style.opacity = 1 - seg(t, 5.3, 5.6);
+    // page i slides in from the right at 6.2 + (i-1)*1.3
+    $$(".pg").forEach((im, i) => { const u = i ? E.out(seg(t, 6.2 + (i - 1) * 1.3, 6.65 + (i - 1) * 1.3)) : 1; im.style.transform = `translateX(${(1 - u) * 600}px)`; });
+    const zoom = E.inOut(seg(t, 6, 6.6)), leave = E.in(seg(t, 11, 11.6));
+    css($("#frame"), { s: 1 + .08 * zoom - .3 * leave, y: -60 * zoom, r: -3 * leave, o: 1 - leave });
+    $("#title").style.opacity = 1 - leave;
+    $("#end").style.clipPath = `circle(${Math.max(1, E.inOut(seg(t, 11.2, 12)) * 1300)}px at 540px 1200px)`;
+    $$("#end > *").forEach((e, i) => rise(e, seg(t, 11.7 + i * .15, 12.3 + i * .15), 50));
+  });
+</script>
+</body></html>

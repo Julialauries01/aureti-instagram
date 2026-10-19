@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<script src="motion.js"></script>
+<style>
+  /* Style: "vitrine de modelos" — full-colour panels slide like a carousel, one ready-made template per panel */
+  .panel { position: absolute; inset: 0; overflow: hidden; }
+  .panel .cat { position: absolute; left: 90px; top: 250px; font-size: 24px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; }
+  .panel .name { position: absolute; left: 90px; top: 300px; font-size: 104px; font-weight: 600; letter-spacing: -.04em; line-height: 1; }
+  .panel .type { position: absolute; left: 90px; top: 430px; font-size: 34px; font-weight: 300; }
+  .panel .phone { left: 240px; top: 560px; width: 600px; height: 1240px; border-radius: 80px; padding: 20px; }
+  .panel .phone .scr { border-radius: 62px; }
+  .panel .num { position: absolute; right: 90px; top: 250px; font-size: 24px; font-weight: 600; letter-spacing: .2em; }
+  #intro, #fim { display: flex; flex-direction: column; justify-content: center; padding: 0 90px; }
+  #intro .k { font-size: 26px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 34px; }
+  #intro .h { font-size: 118px; }
+  #fim { align-items: center; text-align: center; }
+  #fim .h { font-size: 100px; margin-bottom: 30px; }
+  #fim .lead { margin-bottom: 90px; }
+  #dots { position: absolute; left: 0; right: 0; top: 1840px; display: flex; justify-content: center; gap: 18px; }
+  #dots i { width: 14px; height: 14px; border-radius: 50%; background: rgba(255,255,255,.4); }
+</style></head>
+<body><div class="stage">
+  <div id="intro" class="panel navy">
+    <p class="k">Modelos prontos · Aureti</p>
+    <p class="h"><span class="w">Seu site</span><br><span class="w">pronto, <em>sem</em></span><br><span class="w"><em>começar do zero.</em></span></p>
+  </div>
+  <div id="fim" class="panel navy end">
+    <p class="h">5 modelos.<br><em>Escolha o seu.</em></p>
+    <p class="lead">Personalizados com a sua marca, fotos e textos.</p>
+    <p class="logo">aureti<small>ENGENHARIA DE SOFTWARE</small></p>
+    <p class="handle">aureti.com.br · @aure.tii</p>
+    <p class="cta">Comente MODELO e receba os links</p>
+  </div>
+  <div id="dots"><i></i><i></i><i></i><i></i><i></i></div>
+</div>
+<script>
+  const T = "telas/";
+  const models = [
+    { cat: "Advocacia", name: "Matos & Lima", type: "Site institucional", bg: "#1c1c1e", fg: "#f3efe8", ac: "#c9a96e", screens: ["m-matos-0", "m-matos-1", "m-matos-2"] },
+    { cat: "Coaching e mentoria", name: "Soraya Nunes", type: "Site institucional", bg: "#b49a5c", fg: "#1b1712", ac: "#fffaf0", screens: ["m-soraya-0", "m-soraya-1", "m-soraya-3"] },
+    { cat: "Clínica odontológica", name: "SmileWell", type: "Site institucional", bg: "#0f4f4b", fg: "#ffffff", ac: "#8fd6cf", screens: ["clinica-0", "clinica-1", "clinica-2"] },
+    { cat: "Clínica odontológica", name: "Armodent", type: "Site institucional", bg: "#a9cfd2", fg: "#12343a", ac: "#ffffff", screens: ["m-armodent-0", "m-armodent-1", "m-armodent-2"] },
+    { cat: "Consultoria em compra e venda", name: "Imobiliária", type: "Landing page", bg: "#f26b2a", fg: "#ffffff", ac: "#1b2a4a", screens: ["m-imob-0", "m-imob-1", "m-imob-3"] },
+  ];
+  const stage = $(".stage");
+  models.forEach((m, i) => {
+    const d = document.createElement("div");
+    d.className = "panel"; d.style.background = m.bg; d.style.color = m.fg;
+    d.innerHTML = `<p class="cat" style="color:${m.ac}">${m.cat}</p><p class="num" style="color:${m.ac}">0${i + 1} / 05</p>
+      <p class="name">${m.name}</p><p class="type">${m.type}</p>
+      <div class="phone"><div class="scr">${m.screens.map(s => `<img src="${T}${s}.jpg">`).join("")}</div></div>`;
+    stage.insertBefore(d, $("#fim"));
+  });
+  const panels = $$(".panel").filter(p => !p.id);
+  const S0 = 2.4, D = 4.2;
+  scene(S0 + models.length * D + 3.8, t => {
+    // intro words, then the intro panel is pushed left by the first model
+    $$("#intro .k, #intro .w").forEach((w, i) => rise(w, seg(t, .2 + i * .35, .8 + i * .35), 90));
+    css($("#intro"), { x: -1080 * E.inOut(seg(t, S0 - .1, S0 + .5)) });
+    panels.forEach((p, i) => {
+      const s = S0 + i * D;
+      const enter = E.inOut(seg(t, s - .1, s + .5)), exit = E.inOut(seg(t, s + D - .1, s + D + .5));
+      p.style.transform = `translateX(${1080 * (1 - enter) - 1080 * exit}px)`;
+      p.style.visibility = t > s - .2 && t < s + D + .6 ? "visible" : "hidden";
+      [".cat", ".num", ".name", ".type"].forEach((q, k) => rise(p.querySelector(q), seg(t, s + .3 + k * .1, s + .8 + k * .1), 50));
+      const ph = p.querySelector(".phone");
+      css(ph, { y: (1 - E.out(seg(t, s + .2, s + 1))) * 500, r: lerp(-3, 2, seg(t, s, s + D)), o: 1 });
+      // screens slide up inside the phone, like scrolling the template
+      p.querySelectorAll("img").forEach((im, k) => { const u = k ? E.inOut(seg(t, s + .6 + k * 1.15, s + 1.1 + k * 1.15)) : 1; im.style.transform = `translateY(${(1 - u) * 1200}px)`; });
+    });
+    const fs = S0 + models.length * D;
+    css($("#fim"), { x: 1080 * (1 - E.inOut(seg(t, fs - .1, fs + .5))) });
+    $$("#fim > *").forEach((e, i) => rise(e, seg(t, fs + .3 + i * .15, fs + .9 + i * .15), 50));
+    // progress dots for the 5 models
+    $("#dots").style.opacity = seg(t, S0, S0 + .3) * (1 - seg(t, fs - .2, fs));
+    $$("#dots i").forEach((d, i) => { const on = t >= S0 + i * D - .1 && t < S0 + (i + 1) * D - .1; d.style.background = on ? "#fff" : "rgba(255,255,255,.4)"; d.style.transform = `scale(${on ? 1.4 : 1})`; });
+  });
+</script>
+</body></html>
