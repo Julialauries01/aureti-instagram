@@ -68,3 +68,8 @@ O post "5 sinais" saiu por engano em 19/10 e foi arquivado. Fica guardado para u
 | 14/11 | Modelos prontos à venda | Motion | 2026-11-14-modelos-motion.mp4 |
 
 Motions: fontes em `template/motion/` (um HTML por motion, `render.cjs` grava em MP4; `modelos.html` é a vitrine dos modelos à venda; `showreel.sh` monta um showreel de projetos, não usado em 14/11). Posts estáticos: `template/posts-mes.cjs` + `template/render-png.cjs`.
+
+### Alteração em 20/10/2026
+- Escala adiada para a primeira semana de janeiro de 2027: mockup 04/01 12h (story 18h), motion 06/01 18h (stories 9h e 18h), Reels extra 08/01 19h. Arquivos em `posts/2027-01-04/`.
+- Modelo de clínica antecipado para as vagas: mockup 21/10 12h e motion 23/10 18h, com stories de dentista em 21/10 18h e 23/10 9h e 18h.
+- 11/11 e 12/11 ficaram sem post no feed.
