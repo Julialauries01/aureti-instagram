@@ -11,7 +11,7 @@ const A = "file:///C:/Users/Martha/Documents/Projetos/your-dream-website/src/ass
 const P = "file:///C:/Users/Martha/Documents/Projetos/aureti-instagram/";
 
 const extra = `<style>
-  .ph { margin: 50px auto 0; width: 470px; height: 900px; border-radius: 64px; background: #0d0f14; padding: 16px; box-shadow: 0 40px 90px rgba(0,0,0,.35); }
+  .ph { margin: 40px auto 0; width: 420px; height: 800px; border-radius: 64px; background: #0d0f14; padding: 16px; box-shadow: 0 40px 90px rgba(0,0,0,.35); }
   .ph div { width: 100%; height: 100%; border-radius: 50px; overflow: hidden; }
   .ph img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
   .pic { margin: 44px -90px 0; height: 500px; overflow: hidden; }
@@ -39,15 +39,15 @@ const plan = [
 
   ["2026-10-21", 1, "pdf-x-catalogo", null, "Comparativo PDF x catálogo no site"],
   ["2026-10-21", 2, "quiz-catalogo", null, "Quiz: quantos produtos cabem num catálogo online? (Até 50 / Até 500 / Quantos quiser)"],
-  ["2026-10-21", 3, "escala-cta", null, "CTA projeto Escala"],
+  ["2026-10-21", 3, "modelo-clinica", modelo("Clínica odontológica", "SmileWell", T + "clinica-0.jpg"), "Modelo SmileWell (no dia do mockup da clínica)"],
 
   ["2026-10-22", 1, "dica-velocidade", null, "Dica 53%"],
   ["2026-10-22", 2, "enquete-site-proprio", null, "Enquete: seu negócio já tem site próprio? (Sim / Ainda não)"],
   ["2026-10-22", 3, "teste-velocidade", dica("dark", "Teste rápido", `Seu site abre em<br>menos de <em>3 segundos?</em>`, "Responda <b>VELOCIDADE</b> e a gente te mostra como testar o seu."), "CTA responda VELOCIDADE"],
 
-  ["2026-10-23", 1, "bastidores-escala", dica("light", "Bastidores", `Como nasce<br>um <em>motion</em><br>na Aureti.`, "Hoje às 18h tem vídeo novo do catálogo da Escala, feito do zero com código e design."), "Bastidores do motion da Escala"],
+  ["2026-10-23", 1, "teaser-clinica", dica("light", "Hoje às 18h", `Um vídeo para<br><em>dentistas</em> que<br>querem site pronto.`, "Seu site no ar em poucos dias, <b>sem começar do zero.</b>"), "Teaser do motion da clínica"],
   ["2026-10-23", 2, "caixinha-duvidas", null, "Caixinha: maior dúvida sobre ter um site"],
-  ["2026-10-23", 3, "escala-reels", projeto("Reels novo", `Seu cliente procura,<br>encontra e <em>chama.</em>`, T + "escala-0.jpg", "Catálogo online · Escala Materiais Elétricos", "Comente CATÁLOGO no Reels"), "Aviso do Reels da Escala"],
+  ["2026-10-23", 3, "clinica-reels", projeto("Reels novo", `Seu site pronto<br>em <em>poucos dias.</em>`, T + "clinica-0.jpg", "Modelo pronto · Clínica odontológica", "Comente MODELO no Reels"), "Aviso do Reels da clínica"],
 
   ["2026-10-24", 1, "insta-alugado", dica("dark", "Presença digital", `Seu perfil é<br><em>alugado.</em><br>Seu site é seu.`, "Se o Instagram muda a regra, o alcance cai. <b>O site continua no Google, todo dia.</b>"), "Instagram x site"],
   ["2026-10-24", 2, "enquete-onde-acham", slot("light", "Enquete", `Por onde seus<br>clientes <em>te acham?</em>`, null, "Enquete"), "Enquete: Instagram / Google"],
@@ -120,11 +120,16 @@ const plan = [
   ["2026-11-14", 1, "teaser-vitrine", dica("dark", "Hoje às 18h", `Os 5 <em>modelos</em><br><em>prontos</em> num<br>só vídeo.`, "Advocacia, saúde, mentoria e imobiliária."), "Teaser do Reels de modelos"],
   ["2026-11-14", 2, "enquete-sua-cara", slot("light", "Enquete", `Qual modelo é<br>a <em>sua cara?</em>`, null, "Enquete"), "Enquete: qual modelo é a sua cara"],
   ["2026-11-14", 3, "comente-modelo", dica("dark", "Reels no ar", `Comente <em>MODELO</em><br>no Reels de hoje.`, "A gente te manda os links dos 5 modelos prontos."), "CTA comente MODELO"],
+
+  // Escala postponed to the first week of January 2027
+  ["2027-01-04", 3, "escala-cta", null, "CTA projeto Escala"],
+  ["2027-01-06", 1, "bastidores-escala", dica("light", "Bastidores", `Como nasce<br>um <em>motion</em><br>na Aureti.`, "Hoje às 18h tem vídeo novo do catálogo da Escala, feito do zero com código e design."), "Bastidores do motion da Escala"],
+  ["2027-01-06", 3, "escala-reels", projeto("Reels novo", `Seu cliente procura,<br>encontra e <em>chama.</em>`, T + "escala-0.jpg", "Catálogo online · Escala Materiais Elétricos", "Comente CATÁLOGO no Reels"), "Aviso do Reels da Escala"],
 ];
 
 // arts already made earlier (stories.cjs) are reused instead of regenerated
 const reuse = {
-  "2026-10-21-1": "story-2026-10-23-1-dica", "2026-10-21-2": "story-2026-10-23-2-quiz", "2026-10-21-3": "story-2026-10-23-3-projeto",
+  "2026-10-21-1": "story-2026-10-23-1-dica", "2026-10-21-2": "story-2026-10-23-2-quiz", "2027-01-04-3": "story-2026-10-23-3-projeto",
   "2026-10-22-1": "story-2026-10-20-1-dica", "2026-10-22-2": "story-2026-10-20-2-enquete",
   "2026-10-23-2": "story-2026-10-20-3-caixinha",
   "2026-10-26-1": "story-2026-10-22-1-bastidores", "2026-10-26-2": "story-2026-10-22-2-enquete",

@@ -7,14 +7,14 @@ const { stories } = require("./stories-mes.cjs");
 
 const ROOT = path.join(__dirname, "..");
 const RAW = "https://raw.githubusercontent.com/Julialauries01/aureti-instagram/main/";
-const WEEKS = ["2026-10-19", "2026-10-26", "2026-11-02", "2026-11-09"];
+const WEEKS = ["2026-10-19", "2026-10-26", "2026-11-02", "2026-11-09", "2027-01-04"];
 const DIAS = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 const weekOf = d => { const x = new Date(d + "T12:00:00"); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return x.toISOString().slice(0, 10); };
 
 // --- feed + extra Reels: parsed from posts/<week>/legendas.md ---
 const items = [];
 for (const w of WEEKS) {
-  const md = fs.readFileSync(path.join(ROOT, "posts", w, "legendas.md"), "utf8");
+  const md = fs.readFileSync(path.join(ROOT, "posts", w, "legendas.md"), "utf8").replace(/\r\n/g, "\n");
   for (const sec of md.split(/\n## /).slice(1)) {
     const head = sec.split("\n")[0];
     const m = head.match(/(\d{2})\/(\d{2}),?\s*(\d{1,2})h?\s*—\s*(.+)$/) || head.match(/(\d{2})\/(\d{2})\s*—\s*(.+)$/);
@@ -27,7 +27,7 @@ for (const w of WEEKS) {
     const extra = /Reels extra/i.test(title);
     const video = files.find(f => f.endsWith(".mp4"));
     items.push({
-      date: `2026-${mm}-${dd}`, time: hour, channel: extra ? "Reels extra (fora da grade)" : "Feed",
+      date: `${w.slice(0, 4)}-${mm}-${dd}`, time: hour, channel: extra ? "Reels extra (fora da grade)" : "Feed",
       format: extra ? "Reels" : video ? "Reels" : "Post", theme: title,
       file: video || files[0], cover: video ? files.find(f => f.endsWith(".png")) : "",
       text: body, week: w,

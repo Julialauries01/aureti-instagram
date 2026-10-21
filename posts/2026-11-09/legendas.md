@@ -24,28 +24,6 @@ Ainda não tem o seu? Fale com a gente pelo link da bio.
 
 #dominio #dicasdesite #presencadigital #empreendedorismo #aureti
 
-## Qua 11/11, 12h — Modelo clínica · mockup
-Arquivo: `2026-11-11-clinica-mockup.png`
-
-Sua clínica com um site pronto para atender.
-
-Modelo completo para dentistas, personalizado com a sua marca, suas fotos e seus serviços.
-
-Veja o modelo pelo link da bio ou chame no WhatsApp.
-
-#sitepradentista #odontologia #clinicaodontologica #presencadigital #aureti
-
-## Qui 12/11, 18h — Modelo clínica · motion (Reels)
-Arquivos: `2026-11-12-clinica-motion.mp4` · capa `2026-11-12-clinica-motion-capa.png`
-
-Seu site pronto em poucos dias.
-
-Escolha o modelo, envie sua marca e suas fotos, e a gente coloca no ar. Um site completo para a sua clínica, sem começar do zero.
-
-Comente MODELO e receba o link para ver o site.
-
-#sitepradentista #odontologia #modelodesite #reels #aureti
-
 ## Sex 13/11, 12h — Depoimento
 Arquivo: `2026-11-13-depoimento.png` (PENDENTE: falta o texto real do cliente)
 

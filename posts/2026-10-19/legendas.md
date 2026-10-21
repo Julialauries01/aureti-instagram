@@ -17,16 +17,16 @@ Arquivo: `2026-10-20-karina-tour.mp4`
 
 Um passeio pelo site que criamos para a advogada Karina Mendes. (legenda completa já está no Metricool)
 
-## Qua 21/10, 12h — Escala · mockup
-Arquivo: `2026-10-21-escala-mockup.png`
+## Qua 21/10, 12h — Modelo clínica · mockup
+Arquivo: `2026-10-21-clinica-mockup.png`
 
-Seu cliente procura, encontra e chama — tudo em poucos toques.
+Sua clínica com um site pronto para atender.
 
-Para a Escala Materiais Elétricos, desenvolvemos um catálogo online com busca, categorias e produtos organizados, que funciona no computador, no tablet e no celular.
+Modelo completo para dentistas, personalizado com a sua marca, suas fotos e seus serviços.
 
-Quer seu catálogo de produtos disponível 24 horas? Fale com a gente pelo link da bio.
+Veja o modelo pelo link da bio ou chame no WhatsApp.
 
-#catalogodigital #materiaiseletricos #desenvolvimentoweb #presencadigital #aureti
+#sitepradentista #odontologia #clinicaodontologica #presencadigital #aureti
 
 ## Qui 22/10, 12h — Dica · velocidade
 Arquivo: `2026-10-22-dica-velocidade.png`
@@ -39,16 +39,16 @@ Quer saber se o seu site está rápido? Comente VELOCIDADE e a gente te mostra c
 
 #dicasdesite #velocidade #presencadigital #marketingdigital #aureti
 
-## Sex 23/10, 18h — Escala · motion (Reels)
-Arquivos: `2026-10-23-escala-motion.mp4` · capa `2026-10-23-escala-motion-capa.png`
+## Sex 23/10, 18h — Modelo clínica · motion (Reels)
+Arquivos: `2026-10-23-clinica-motion.mp4` · capa `2026-10-23-clinica-motion-capa.png`
 
-Um catálogo online que trabalha enquanto a loja está fechada.
+Seu site pronto em poucos dias.
 
-Produtos em destaque, categorias claras e pedido direto pelo WhatsApp: assim ficou o catálogo da Escala Materiais Elétricos.
+Escolha o modelo, envie sua marca e suas fotos, e a gente coloca no ar. Um site completo para a sua clínica, sem começar do zero.
 
-Comente CATÁLOGO e receba um orçamento para o seu.
+Comente MODELO e receba o link para ver o site.
 
-#catalogoonline #lojavirtual #desenvolvimentoweb #reels #aureti
+#sitepradentista #odontologia #modelodesite #reels #aureti
 
 ## Sáb 24/10, 12h — Site x Instagram
 Arquivo: `2026-10-24-site-x-instagram.png`

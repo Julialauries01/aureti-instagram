@@ -72,14 +72,3 @@ O modelo de landing page para imobiliária e consultoria em compra e venda mostr
 Comente MODELO e receba o link para ver a página completa.
 
 #imobiliaria #corretordeimoveis #landingpage #reels #aureti
-
-## Sex 06/11, 19h — Reels extra · Escala
-Arquivo: `2026-11-06-reels-extra-escala.mp4`
-
-Um catálogo aberto 24 horas por dia.
-
-Assim é navegar pelo catálogo online da Escala Materiais Elétricos no celular: ofertas, produtos em destaque e pedido direto pelo WhatsApp.
-
-Comente CATÁLOGO e receba um orçamento para o seu.
-
-#catalogoonline #materiaiseletricos #lojavirtual #reels #aureti
