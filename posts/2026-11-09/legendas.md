@@ -24,6 +24,28 @@ Ainda não tem o seu? Fale com a gente pelo link da bio.
 
 #dominio #dicasdesite #presencadigital #empreendedorismo #aureti
 
+## Qua 11/11, 12h — Modelo imobiliária · mockup
+Arquivo: `2026-11-11-modelo-imobiliaria-mockup.png`
+
+Imóveis em destaque, contato a um toque.
+
+O modelo de landing page para imobiliária e consultoria em compra e venda reúne imóveis, serviços, depoimentos e o WhatsApp em uma única página, pronta para receber a sua marca.
+
+Corretor ou imobiliária? Comente MODELO e receba o link para ver a página completa.
+
+#imobiliaria #corretordeimoveis #landingpage #modelodesite #aureti
+
+## Qui 12/11, 12h — Modelo pronto ou sob medida
+Arquivo: `2026-11-12-modelo-x-medida.png`
+
+Modelo pronto ou site sob medida?
+
+Modelo pronto: rápido e econômico, com a sua marca, suas fotos e seus textos. Sob medida: criado do zero, do jeito do seu negócio. Os dois funcionam, depende do momento da sua empresa.
+
+Não sabe qual escolher? Comente QUAL e a gente te ajuda a decidir.
+
+#modelodesite #siteprofissional #presencadigital #empreendedorismo #aureti
+
 ## Sex 13/11, 12h — Depoimento
 Arquivo: `2026-11-13-depoimento.png` (PENDENTE: falta o texto real do cliente)
 

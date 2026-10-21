@@ -89,6 +89,19 @@ const posts = {
   "2026-11-13-depoimento": statement("Depoimento",
     `<div class="q">“</div><h1 style="font-size:66px">[Cole aqui o depoimento<br>de um cliente real,<br>com até 3 linhas.]</h1>`,
     "[Nome do cliente] · [Projeto]", "gold"),
+  "2026-11-04-modelo-mentoria-texto": statement("Modelo pronto",
+    `<h1>Mentoras e coaches:<br>seu site <em>já está</em><br><em>pronto.</em></h1>`,
+    "Apresentação, serviços, depoimentos e contato no modelo Soraya Nunes. <b>Personalizado com a sua marca e suas fotos.</b>"),
+  "2026-11-11-modelo-imobiliaria-texto": statement("Modelo pronto",
+    `<h1 style="font-size:80px">Corretor, seus imóveis<br>merecem uma página<br>que <em>gera contato.</em></h1>`,
+    "Landing page pronta para imobiliária e consultoria em compra e venda. <b>Comente MODELO e veja a página.</b>"),
+  "2026-11-04-modelo-imobiliaria-mockup": shell("Modelo pronto", `
+    <h1>Imóveis em destaque,<br>contato a <em>um toque.</em></h1>
+    ${devices(MOTION + "m-imob-desk-0.jpg", MOTION + "m-imob-0.jpg", "Landing page · <b>Imobiliária</b>")}
+    ${foot("Imóveis em destaque, serviços, depoimentos e WhatsApp em uma única página. <b>Personalizada com a sua marca.</b>")}`),
+  "2026-11-13-modelo-x-medida": statement("Qual é o seu caso?",
+    `<h1>Modelo pronto<br>ou site <em>sob medida?</em></h1>`,
+    "Modelo: rápido e econômico, com a sua marca. Sob medida: do seu jeito, do zero. <b>A gente te ajuda a escolher.</b>", "ivory"),
   // Reels covers
   "2026-10-23-escala-motion-capa": cover(`Seu cliente procura,<br>encontra e <em>chama.</em>`, "Catálogo online · Escala Materiais Elétricos", MOTION + "escala-0.jpg", "ivory"),
   "2026-10-26-karina-motion-capa": cover(`Do rascunho<br>ao <em>site no ar.</em>`, "Karina Mendes Advocacia", MOTION + "karina-0.jpg", "ivory"),
